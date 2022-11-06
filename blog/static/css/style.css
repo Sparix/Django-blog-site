@@ -1,0 +1,332 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+
+html, body {
+    margin: 0;
+}
+
+body {
+    background: #E0FFFF;
+}
+
+div {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    text-decoration: none;
+}
+
+nav {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+nav ul, nav li {
+    outline: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height: 60px;
+    background: #1b2024;
+    width: 100%;
+    z-index: 1000;
+    position: fixed;
+}
+
+.text_header {
+    display: flex;
+    padding-left: 15%;
+    align-items: center;
+}
+
+.text {
+    margin-right: 50px;
+    font-size: 24px;
+    color: #fff;
+    position: relative;
+    font-family: arial;
+    cursor: pointer;
+    line-height: 1; /*задаём высоту строки*/
+    text-decoration: none; /*убираем подчёркивание*/
+}
+
+.text:after {
+    display: block;
+    position: absolute;
+    left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+    width: 0; /*задаём длинну линии до наведения курсора*/
+    height: 2px; /*задаём ширину линии*/
+    background-color: #fff; /*задаём цвет линии*/
+    content: "";
+    transition: width 0.3s ease-out; /*задаём время анимации*/
+}
+
+.text:hover:after,
+.text:focus:after {
+    width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+}
+
+.head-icon {
+    width: 30px;
+    height: 30px;
+    stroke: blue;
+    fill: #EFFF00;
+    margin-right: 2%;
+    border-radius: 100px;
+}
+
+.head-icon:hover {
+    border-radius: 100px;
+    stroke: red;
+    fill: black;
+}
+
+.fa-2x {
+    font-size: 2em;
+}
+
+.fa {
+    display: table-cell;
+    width: 60px;
+    height: 36px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+
+.main-menu:hover, nav.main-menu.expanded {
+    width: 250px;
+    overflow: visible;
+}
+
+.main-menu {
+    background: #1b2024;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    width: 60px;
+    overflow: hidden;
+    -webkit-transition: width .05s linear;
+    transition: width .05s linear;
+    -webkit-transform: translateZ(0) scale(1, 1);
+    z-index: 1000;
+    position: fixed;
+}
+
+.main-menu > ul {
+    margin: 7px 0;
+}
+
+.main-menu li {
+    display: block;
+    width: 250px;
+}
+
+.main-menu li > a {
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: #fff;
+    font-family: arial;
+    font-size: 14px;
+    text-decoration: none;
+    -webkit-transform: translateZ(0) scale(1, 1);
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+
+}
+
+.main-menu .nav-icon {
+    display: table-cell;
+    width: 60px;
+    height: 36px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+}
+
+.main-menu .nav-text {
+    display: table-cell;
+    vertical-align: middle;
+    width: 190px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.main-menu > ul.logout {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.no-touch .scrollable.hover {
+    overflow-y: hidden;
+}
+
+
+.main-menu li:hover > a, nav.main-menu li.active > a, .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus, .no-touch .dashboard-page nav.dashboard-menu ul li:hover a, .dashboard-page nav.dashboard-menu ul li.active a {
+    color: #fff;
+    background-color: #5fa2db;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+form {
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+}
+
+input, button {
+    border: none;
+    outline: none;
+    border-radius: 3px;
+}
+
+input {
+    width: 100%;
+    height: 32px;
+    background: #E0FFFF;
+    padding-left: 15px;
+}
+
+button {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    background: #1b2024;
+    cursor: pointer;
+}
+
+button:before {
+    content: "\f105";
+    font-family: FontAwesome;
+    color: #F9F0DA;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.login-icon {
+    width: 32px;
+    height: 32px;
+    fill: #1b2024;
+    stroke: white;
+    margin-right: 30px;
+}
+
+.login-icon:hover {
+    background: #E0FFFF;
+    border-radius: 8px;
+}
+
+
+.categories {
+    background: linear-gradient(48deg, rgb(27, 32, 36), rgb(62,67,71), rgb(134,136,138), rgb(183,183,183));
+    height: 100%;
+    margin-left: 13%;
+    text-align: center;
+    padding: 30px;
+    position: fixed;
+    animation: gradient 10s infinite linear;
+    background-size: 100%;
+}
+
+.categories-text{
+    color: #1b2024;
+}
+
+.categories-text:hover{
+    color: white;
+}
+
+.categories_car {
+    margin-top: 30px;
+    font-size: 30px;
+}
+.fa-categories {
+    color: black;
+    font-size: 40px;
+}
+
+.posts {
+    left: 30%;
+    right: 2%;
+}
+
+.upper-post {
+    margin-top: 100px;
+    background: #C0C0C0;
+    margin-left: 70px;
+    margin-right: 100px;
+    position: relative;
+    border-radius: 10px;
+    padding: 10px 0 10px 0;
+}
+.first {
+    margin: 0 0 0 10px;
+    float: left;
+}
+.last {
+    margin: 0 10px 0 0;
+    text-align: right;
+}
+.title {
+    text-align: center;
+}
+.lower-post {
+    margin-top: 20px;
+    background-color: #C0C0C0;
+    text-align: center;
+    margin-left: 70px;
+    margin-right: 100px;
+    height: 300px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden
+
+}
+.img-post {
+    float: left;
+    margin-left: 10px;
+    border-radius: 20px;
+}
+
+
+@keyframes categories {
+    0% {
+        background-position: 80% 0%;
+    }
+    50% {
+        background-position: 20% 100%;
+    }
+    100% {
+        background-position: 80% 0%;
+    }
+}

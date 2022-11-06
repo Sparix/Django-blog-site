@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" href="{% static '/css/style.css' %}" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header>
+    <div class="header">
+        <ul class="text_header">
+            <a href="#" class="head-icon">
+                <svg viewBox="0 0 16 16">
+                    <path d="M7.996 0A7.998 7.998 0 0 0 0 8a8 8 0 0 0 6.93 7.93v-1.613a1.06 1.06 0 0 0-.717-1.008A5.602 5.602 0 0 1 2.4 7.865 5.579 5.579 0 0 1 8.054 2.4a5.599 5.599 0 0 1 5.535 5.81l-.002.046a6.116 6.116 0 0 1-.012.192l-.005.061a4.85 4.85 0 0 1-.033.284l-.01.068c-.685 4.516-6.564 7.054-6.596 7.068A7.998 7.998 0 0 0 15.992 8 7.998 7.998 0 0 0 7.996.001Z"/>
+                </svg>
+            </a>
+            {% for m in header %}
+                <li>
+                    <a href="" class="text">{{ m }}</a>
+                </li>
+            {% endfor %}
+            <form>
+                <input type="text" placeholder="Search...">
+                <button type="submit"></button>
+            </form>
+            <a href="#" class="login-icon">
+                <svg width="32" height="32"
+                     class="bi bi-person-fill" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>
+            </a>
+        </ul>
+    </div>
+    <div class="area"></div>
+    <nav class="main-menu">
+        <ul class="ul-menu">
+            {% for key, value in menu_bar.items %}
+                <li>
+                    <a href="">
+                        <i class="fa {{ key }} fa-2x"></i>
+                        <span class="nav-text">
+                            {{ value }}
+                        </span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% if request.user.is_authenticated %}
+            <ul class="logout">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-power-off fa-2x"></i>
+                        <span class="nav-text">
+                            Logout
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        {% else %}
+            <ul class="logout">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-user fa-2x"></i>
+                        <span class="nav-text">
+                            Login
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        {% endif %}
+    </nav>
+</header>
+{% block content %}
+{% endblock %}
+</body>
+</html>

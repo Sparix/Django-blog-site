@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="categories">
+        <ul class="categories_car">
+            <a href="#" class="categories-text">
+                <li>Categories</li>
+            </a>
+            <hr size="3" color="black">
+            {% for cat in count_cat %}
+                {% if cat.car__count > 0 %}
+                <a href="#" class="categories-text">
+                    <li>{{ cat.name }}</li>
+                </a>
+                <hr size="3" color="black">
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="posts">
+        <ul class="article-post">
+            {% for p in posts %}
+                {% if p.is_published %}
+                    <li class="pos">
+                        <div class="upper-post">
+                            <p class="first">Categories: {{ p.cat }}</p>
+                            <p class="last">Date: {{ p.time_update|date:"d-m-Y H:i:s" }}</p>
+                        </div>
+                        <div class="lower-post">
+                            <h2 class="title">{{ p.name }}</h2>
+                            {% if p.photo %}
+                                <p><img class="img-post" src="{{ p.photo.url }}"></p>
+                            {% endif %}
+                            {{ p.content|linebreaks|truncatewords:200 }}
+                        </div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
