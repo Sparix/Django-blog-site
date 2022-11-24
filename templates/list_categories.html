@@ -1,0 +1,12 @@
+{% load blog_tags %}
+{% get_categories as categories %}
+{% for cat in categories %}
+        {% if cat.id == cat_selected %}
+            <li class="categories-text-selected">{{ cat.name }}</li>
+        {% else %}
+            <a href="{{ cat.get_absolute_url }}" class="categories-text">
+                <li>{{ cat.name }}</li>
+            </a>
+        {% endif %}
+        <hr size="3" color="black">
+{% endfor %}

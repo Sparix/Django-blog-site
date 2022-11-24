@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+<div class="post-back">
+        <p class="name-post">
+    <h1>{{ post.name }}</h1>
+        <p class="position-photo"><img class="post-photo" src="{{ post.photo.url }}"></p>
+        <div class="text-position"><p>{{ post.content|linebreaks }}</p>
+        </div>
+</div>
+
+{% endblock %}

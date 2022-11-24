@@ -1,6 +1,6 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
-
 
 
 class Categories(models.Model):
@@ -10,10 +10,14 @@ class Categories(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'cat_slug': self.slug})
+
 
 class Car(models.Model):
+    author = models.ForeignKey(User, related_name='entries', blank=True, on_delete=models.PROTECT)
     name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=255, unique=True, db_index=True)
+    slug = models.SlugField(max_length=200, unique=True, db_index=True)
     content = models.TextField(blank=True)
     photo = models.ImageField(upload_to="photos/%Y/%m/%d/")
     time_create = models.DateTimeField(auto_now_add=True)
@@ -23,3 +27,9 @@ class Car(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('post', kwargs={'post_slug': self.slug,})
+
+    class Meta:
+        ordering = ['-time_create', 'name']

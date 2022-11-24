@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="content-login">
+        <ul>
+            <li class="login">
+                <h1>Вхід</h1>
+                <p>Пожалуйста, заполните эту форму, чтобы войти в учетную запись.</p>
+                <hr color="#E0FFF" size="1px">
+            </li>
+            <li>
+                <p class="error-link">{{ error }}</p>
+                <form class="login" method="post">
+                <h1 style="color: #E0FFFF">{{ form.non_field_errors }}</h1>
+                    {% csrf_token %}
+                    <ul>
+                        {% for f in form %}
+                            <p>{{ f.errors }}<label class="reg-label" for="{{ f.id_for_label }}">{{ f.label }}:</label>{{ f }}</p>
+                        {% endfor %}
+                            <button type="submit" class="registerbtn">Вхід</button>
+                        <li class="log-acc">
+                            У меня немає ще аккаунта
+                            <a href="{% url 'register' %}" class="log-link">Зареєструватися</a>
+                        </li>
+                    </ul>
+                </form>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

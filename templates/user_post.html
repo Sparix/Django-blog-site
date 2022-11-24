@@ -3,18 +3,7 @@
 {% load blog_tags %}
 
 {% block content %}
-    <div class="categories">
-        <ul class="categories_car">
-            {% if cat_selected == 0 %}
-                <li class="categories-text-selected">Categories</li>
-            {% else %}
-                <li><a href="{% url 'home' %}" class="categories-text">Categories</a></li>
-            {% endif %}
-            <hr size="3" color="black">
-            {% show_categories cat_selected=cat_selected %}
-        </ul>
-    </div>
-    <div class="posts">
+    <div class="posts-user">
         <ul class="article-post">
             {% for p in posts %}
                 <li class="pos">
