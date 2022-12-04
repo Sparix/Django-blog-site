@@ -1,4 +1,6 @@
 from django import template
+from django.db.models import Count
+
 from blog.models import *
 
 register = template.Library()

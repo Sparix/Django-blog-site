@@ -1,6 +1,6 @@
 from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView
-from django.shortcuts import redirect
+from django.shortcuts import redirect, Http404
 from django.db.models import Count
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
@@ -9,11 +9,10 @@ from django.views.generic import ListView, DetailView, CreateView
 from .forms import *
 from .models import *
 
-count_cat = Categories.objects.annotate(Count('car'))
 menu_bar = {'fa-home': 'home', 'fa-twitter': 'homes'}
-menu = [{'title': 'Home', 'url_name': 'home'},
-        {'title': 'Posts', 'url_name': 'post'},
-        {'title': 'MyPosts', 'url_name': 'userpost'}]
+menu = [{'url_name': 'account', 'name': 'Home'},
+        {'url_name': 'home', 'name': 'Posts'},
+        {'url_name': 'users', 'name': 'MyPosts'}]
 
 
 class CarHome(ListView):
@@ -26,10 +25,10 @@ class CarHome(ListView):
         context = super().get_context_data(**kwargs)
         context['menu_bar'] = menu_bar
         context['cat_selected'] = 0
-        context['count_cat'] = count_cat
         user_menu = menu.copy()
         if not self.request.user.is_authenticated:
             user_menu.pop(2)
+            user_menu.pop(0)
 
         context['menu'] = user_menu
         return context
@@ -54,6 +53,7 @@ class ShowPost(DetailView):
         user_menu = menu.copy()
         if not self.request.user.is_authenticated:
             user_menu.pop(2)
+            user_menu.pop(0)
 
         context['menu'] = user_menu
         return context
@@ -85,10 +85,10 @@ class ShowCategory(ListView):
         context = super().get_context_data(**kwargs)
         context['menu_bar'] = menu_bar
         context['cat_selected'] = context['posts'][0].cat_id
-        context['count_cat'] = count_cat
         user_menu = menu.copy()
         if not self.request.user.is_authenticated:
             user_menu.pop(2)
+            user_menu.pop(0)
 
         context['menu'] = user_menu
         return context
@@ -125,6 +125,7 @@ class RegisterUser(CreateView):
         user_menu = menu.copy()
         if not self.request.user.is_authenticated:
             user_menu.pop(2)
+            user_menu.pop(0)
 
         context['menu'] = user_menu
         return context
@@ -210,10 +211,10 @@ class ShowPostUser(ListView):
         context = super().get_context_data(**kwargs)
         context['menu_bar'] = menu_bar
         context['cat_selected'] = 0
-        context['count_cat'] = count_cat
         user_menu = menu.copy()
         if not self.request.user.is_authenticated:
             user_menu.pop(2)
+            user_menu.pop(0)
 
         context['menu'] = user_menu
         return context
